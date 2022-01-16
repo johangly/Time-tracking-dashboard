@@ -12,7 +12,6 @@
 - CSS custom properties
 - Flexbox
 - Sass
-- Grid
 
 ## Author
 
