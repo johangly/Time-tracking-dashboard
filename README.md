@@ -4,7 +4,7 @@
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Time-tracking-dashboard](https://johangly.github.io/Time-tracking-dashboard/)
 
 ### Built with
 
