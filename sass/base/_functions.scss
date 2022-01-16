@@ -1,0 +1,15 @@
+@function convert($px) {
+    $value: calc($px / 16)+rem;
+    @return $value;
+}
+
+@function resizer($min, $pref, $max) {
+    $size: clamp(convert($min), $pref, convert($max));
+    @return $size;
+}
+
+// @function convert($px) {
+// $value: calc($px / 16);
+// $res: $value+rem;
+// @return $res;
+// }

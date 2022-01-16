@@ -1,0 +1,289 @@
+@use "../base/functions" as func;
+@use "../base/extensions";
+@use "../base/variables" as var;
+.main * {
+    font: normal 1rem var.$font-rubik;
+    color: var.$white;
+    text-transform: capitalize;
+}
+
+body {
+    .main {
+        padding: 50px 0;
+        width: 100%;
+        min-height: 100vh;
+        background-color: var.$very-dark-blue;
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        grid-template-rows: repeat(2, 280px);
+        justify-content: center;
+        align-content: center;
+        gap: 2rem;
+        .card {
+            cursor: pointer;
+            max-width: 280px;
+            min-width: 280px;
+            min-height: 280px;
+            max-height: 280px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            .card__color {
+                height: 100%;
+                border-radius: 10px 10px 20px 20px;
+                width: 100%;
+                position: absolute;
+                // background-color: var.$light-red;
+                overflow: hidden;
+                .card__img {
+                    position: absolute;
+                    right: 15px;
+                    margin-top: -10px;
+                }
+            }
+            .card__body {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 10;
+                width: 100%;
+                min-height: 230px;
+                position: relative;
+                padding: func.convert(25);
+                background-color: var.$dark-blue;
+                border-radius: 15px;
+                .card__name {
+                    @extend %align-center;
+                    margin-bottom: func.convert(25);
+                    justify-content: space-between;
+                    min-width: 100%;
+                    h2 {
+                        font-weight: 600;
+                    }
+                    button {
+                        background-color: transparent;
+                        @extend %align-center;
+                        cursor: pointer;
+                    }
+                }
+                .card__time {
+                    display: flex;
+                    flex-direction: column;
+                    .card__hours {
+                        font-size: 3rem;
+                        font-weight: 300;
+                    }
+                    .card__description {
+                        margin-top: func.convert(20);
+                        color: var.$pale-blue;
+                    }
+                }
+            }
+            &:hover .card__body {
+                background-color: hsl(236, 45%, 35%);
+            }
+        }
+        .profile {
+            grid-row-start: 1;
+            grid-row-end: 3;
+            margin: 0 auto;
+            max-width: 280px;
+            min-width: 280px;
+            min-height: 280px;
+            border-radius: 15px;
+            background-color: var.$dark-blue;
+            &__colors {
+                background-color: var.$blue;
+                border-radius: 10px 10px 20px 20px;
+                padding: func.convert(35);
+                min-height: 67%;
+                .profile__img {
+                    max-width: 40%;
+                    border: 3px solid var.$white;
+                    margin-bottom: func.convert(30);
+                    border-radius: 50%;
+                }
+                .colors__text {
+                    span {
+                        display: block;
+                        margin-right: auto;
+                        color: var.$pale-blue;
+                    }
+                    h1 {
+                        font-size: 3rem;
+                        font-weight: 300;
+                    }
+                }
+            }
+            &__format {
+                display: flex;
+                min-height: 33%;
+                padding: func.convert(25) func.convert(35);
+                flex-direction: column;
+                justify-content: space-between;
+                button {
+                    padding: func.convert(5) 0;
+                    background-color: transparent;
+                    text-align: start;
+                    font-size: 1.3rem;
+                    color: var.$pale-blue;
+                    cursor: pointer;
+                    transition: 100ms ease all;
+                    &:hover {
+                        color: var.$white;
+                    }
+                }
+                .format__button:nth-child(2) {
+                    color: var.$white;
+                }
+            }
+        }
+    }
+}
+
+// cards colors
+.main {
+    .work {
+        .card__color {
+            background-color: var.$light-red;
+        }
+    }
+    .play {
+        .card__color {
+            background-color: var.$soft-blue;
+        }
+    }
+    .study {
+        .card__color {
+            background-color: var.$dark-red;
+        }
+    }
+    .exercise {
+        .card__color {
+            background-color: var.$lime-green;
+            .card__img {
+                top: 10px;
+            }
+        }
+    }
+    .social {
+        .card__color {
+            background-color: var.$violet;
+        }
+    }
+    .self-care {
+        .card__color {
+            background-color: var.$soft-orange;
+        }
+    }
+}
+
+@media only screen and (max-width: 1235px) {
+    body {
+        .main {
+            gap: 2rem;
+            grid-template-columns: repeat(3, max-content);
+        }
+    }
+}
+
+@media only screen and (max-width: 926px) {
+    body {
+        .main {
+            gap: 2rem;
+            grid-template-columns: repeat(2, max-content);
+        }
+    }
+}
+
+@media only screen and (max-width: 602px) {
+    body {
+        .main {
+            grid-template-rows: repeat(1, 180px);
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, max-content);
+            .profile {
+                min-width: 350px;
+                min-height: auto;
+                max-height: 180px;
+                grid-row-end: auto;
+                .profile__colors {
+                    display: flex;
+                    min-height: auto;
+                    align-items: center;
+                    justify-content: space-around;
+                    padding: func.convert(25) func.convert(20);
+                    .profile__img {
+                        margin: 0;
+                        // margin-right: 10px;
+                        width: 70px;
+                    }
+                    .colors__text {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        h1 {
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+                .profile__format {
+                    min-height: 35%;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: func.convert(2) func.convert(20);
+                    .format__button {
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+            .card {
+                min-height: 155px;
+                max-height: 155px;
+                max-width: 350px;
+                min-width: auto;
+                .card__body {
+                    min-height: auto;
+                    padding: func.convert(25);
+                    .card__name {
+                        margin-bottom: 10px;
+                    }
+                    .card__time {
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        .card__hours {
+                            font-size: 1.9rem;
+                        }
+                        .card__description {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 382px) {
+    body {
+        .main {
+            .card {
+                width: 90vw;
+                margin: auto;
+            }
+            .profile {
+                width: 90vw;
+                max-width: none;
+                min-width: auto;
+                .profile__colors {
+                    .colors__text {
+                        h1 {
+                            font-size: 1.3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

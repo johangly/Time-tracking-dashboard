@@ -1,0 +1,13 @@
+@use "functions" as func;
+@use "variables" as var;
+%align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%first-letter {
+    &::first-letter {
+        text-transform: capitalize;
+    }
+}
