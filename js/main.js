@@ -33,6 +33,9 @@ fetch('js/data.json')
     .then(data => {
         //button for change to daily stats
         daily.addEventListener('click', e => {
+            daily.classList.add('active');
+            monthly.classList.remove('active');
+            weekly.classList.remove('active');
             //! work 
             workTitle.innerHTML = data[0].title;
             workCurrent.innerHTML = data[0].timeframes.daily.current + 'hrs';
@@ -60,6 +63,9 @@ fetch('js/data.json')
         });
         //button for change to weekly stats
         weekly.addEventListener('click', e => {
+            daily.classList.remove('active');
+            monthly.classList.remove('active');
+            weekly.classList.add('active');
             //! work 
             workCurrent.innerHTML = data[0].timeframes.weekly.current + 'hrs';
             workPrevius.innerHTML = `last week - ${data[0].timeframes.weekly.previous}hrs`;
@@ -81,6 +87,9 @@ fetch('js/data.json')
         });
         //button for change to monthly stats
         monthly.addEventListener('click', e => {
+            daily.classList.remove('active');
+            monthly.classList.add('active');
+            weekly.classList.remove('active');
             //! work 
             workCurrent.innerHTML = data[0].timeframes.monthly.current + 'hrs';
             workPrevius.innerHTML = `last monthly - ${data[0].timeframes.monthly.previous}hrs`;

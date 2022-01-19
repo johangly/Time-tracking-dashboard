@@ -170,7 +170,7 @@ body .main .profile__format button {
 body .main .profile__format button:hover {
   color: #fff;
 }
-body .main .profile__format .format__button:nth-child(2) {
+body .main .profile__format .active {
   color: #fff;
 }
 
